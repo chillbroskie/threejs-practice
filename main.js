@@ -89,6 +89,27 @@ moon.position.setX(-10);
 matt.position.z = -5;
 matt.position.x = 2;
 
+//scroll
+
+function moveCamera() {
+  const t = document.body.getBoundingClientRect().top;
+  moon.rotation.x += 0.05;
+  moon.rotation.y += 0.075;
+  moon.rotation.z += 0.05;
+
+  matt.rotation.y += 0.01;
+  matt.rotation.z += 0.01;
+
+  camera.position.z = t * -0.01;
+  camera.position.x = t * -0.0002;
+  camera.rotation.y = t * -0.0002;
+}
+
+document.body.onscroll = moveCamera;
+moveCamera();
+
+//animate
+
 
 function animate() {
   requestAnimationFrame( animate );
